@@ -1,5 +1,10 @@
 import { uuid } from 'uuidv4';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('appointments')
 class Appointment {
@@ -11,5 +16,11 @@ class Appointment {
 
   @Column('timestamp with time zone')
   date: Date;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @CreateDateColumn()
+  updated_at: Date;
 }
 export default Appointment;
