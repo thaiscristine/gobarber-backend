@@ -6,7 +6,11 @@ import { getCustomRepository } from 'typeorm';
 import AppointmentsRepository from '../repositories/AppointmentRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService';
 
+import ensureAuthenticated from '../middlewares/EnsureAuthenticated';
+
 const appointmentsRouter = Router();
+
+appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.post('/', async (request, response) => {
   try {
